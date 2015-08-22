@@ -30,25 +30,28 @@ App::uses('AppController', 'Controller');
  */
 class VisitorsController extends AppController {
 
-    public $uses = array('Category', 'Detail');
+    public $uses = array('User', 'Detail');
 
     public function index () {
         
     }
 
-    public function category () {
-        
-    }
-
     public function all () {
-        
-    }      
-    
-    public function area () {
-        
+        $detail_datas = $this->Detail->get_detail_datas();
+        $this->set('detail_datas', $detail_datas);
     }    
     
-    public function detail () {
+    public function category ($category_name = '') {
+        $detail_datas = $this->Detail->get_detail_datas($category_name);
+        $this->set('detail_datas', $detail_datas);
+    }   
+    
+    public function area ($prefecture = '') {
+        $detail_datas = $this->Detail->get_detail_datas(NULL, $prefecture);
+        $this->set('detail_datas', $detail_datas);       
+    }    
+    
+    public function detail ($detail_id = NULL) {
         
     }
     

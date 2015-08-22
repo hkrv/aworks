@@ -23,4 +23,21 @@ class Detail extends Model {
     
     public $primaryKey = 'detail_id';     
     
+    public function get_detail_datas($category_name = NULL, $prefecture = NULL){
+        
+        if(isset($category_name)){
+            $detail_datas = $this->find('all', array(
+                'conditions' => array('category_name' => $category_name)
+            ));
+        }else if(isset($prefecture)){
+            $detail_datas = $this->find('all', array(
+                'conditions' => array('prefecture' =>$prefecture)
+            ));
+        }else{
+            $detail_datas = $this->find('all');            
+        }
+        
+        return $detail_datas;
+    }
+    
 }

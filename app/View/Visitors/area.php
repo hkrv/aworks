@@ -3,16 +3,21 @@
       <div class="pickupcontent">
         <div class="row">
         <div class="col-12">
+        <?php foreach($detail_datas as $data) : ?>
           <div class="col-4">
             <div class="imgArea">
             <?php echo $this->Html->image('jobs.jpg'); ?>
             </div>
             <div class="textareaTop">
               <p class="contenttext">
-                  タイトル<br>カテゴリ<br>エリア<br>コメント
+                  <?php echo $data["Detail"]["detail_name"]; ?><br>
+                  <?php echo $data["Detail"]["category_name"]; ?><br>
+                  <?php echo $data["Detail"]["prefecture"]; ?><br>
+                  <?php echo $data["Detail"]["comment"]; ?>
               </p>
             </div>
           </div>
+        <?php endforeach; ?>
           <div class="col-4">
             <div class="imgArea">
             <?php echo $this->Html->image('jobs.jpg'); ?>
