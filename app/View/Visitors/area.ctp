@@ -16,7 +16,7 @@
               <p class="contenttext">
                   <?php echo $data["Detail"]["detail_name"]; ?><br>
                   <?php echo $data["Detail"]["category_name"]; ?><br>
-                  <?php echo $data["Detail"]["prefecture"]; ?><br>
+                  <?php echo $data["Detail"]["prefecture"] . " " . $data["Detail"]["area"]; ?><br>
                   <?php echo $data["Detail"]["summary"]; ?>
               </p>
             </div>

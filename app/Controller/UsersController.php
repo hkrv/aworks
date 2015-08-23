@@ -36,7 +36,9 @@ class UsersController extends AppController {
             
             if ($this->User->save($this->request->data)) {
                 $this->Session->setFlash(__('ユーザー登録が完了しました。'));
-                $this->redirect(array('controller' => 'visitors', 'action' => 'index'));
+                    if ($this->Auth->login()) {
+                        $this->redirect($this->Auth->redirect());
+                    }
             } else {
                 $this->Session->setFlash(__('ユーザーを登録できません。'));
             }

@@ -40,14 +40,85 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 </head>
 <body>
 <!-- header -->
-  <nav>
-    <ul>
-      <li>asobiworks</li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-  </nav>
+<div class="header-menu">
+        <div class="container">
+                <div class="link">
+                        <i class="fa fa-angle-right"></i> エリアから探す
+                        <i class="fa fa-angle-right"></i> カテゴリーから探す
+                </div>
+                <h1>見たことないアソビ、見に行こう。</h1>
+                <div class="clearfix"></div>
+        </div>
+</div>
+<div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+                <div class="navbar-header">
+                        <button class="navbar-toggle" data-toggle="collapse" data-target=".target">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="<?php echo $this->Html->url(array(
+                                            "controller" => "visitors",
+                                            "action" => "index"
+                                        ));?>"><img src="/img/header-logo.png" alt="Asobi Works"></a>
+                </div>
+
+                <div class="collapse navbar-collapse target">
+                        <div class="navbar-right">
+                        <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Asobi Worksとは <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                                <li><a href="https://www.shigoto-ryokou.com/about">Asobi Worksとは</a></li>
+                                                <li><a href="https://www.shigoto-ryokou.com/flow">アソビまでの流れ</a></li>
+                                                <li><a href="https://www.shigoto-ryokou.com/process">アソビのイメージ</a></li>
+                                        </ul>
+                                </li>
+                                <?php if(isset($auth_user)) : ?>
+                                    <?php if((int)$auth_user["role"] === 1) : ?>
+                                    <li><a href="<?php echo $this->Html->url(array(
+                                            "controller" => "visitors",
+                                            "action" => "app_form"
+                                        ));?>">アソビの登録</a></li>
+                                    <?php else : ?>
+                                    <li><a href="<?php echo $this->Html->url(array(
+                                            "controller" => "visitors",
+                                            "action" => "all"
+                                        ));?>">アソビ一覧</a></li>
+                                    <?php endif; ?>                                    
+                                <?php else : ?>
+                                <li><a href="<?php echo $this->Html->url(array(
+                                        "controller" => "users",
+                                        "action" => "signup"
+                                    ));?>">新規会員登録</a></li>
+                                <?php endif; ?>
+                                
+                                <!-- <li><a href="https://www.shigoto-ryokou.com/all">アソビ一覧</a></li> -->
+                                <!-- <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">ヘルプ <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                                <li><a href="https://www.shigoto-ryokou.com/faq">よくある質問</a></li>
+                                                <li><a href="https://www.shigoto-ryokou.com/contact/">お問い合わせ</a></li>
+                                        </ul>
+                                </li> -->
+                                <?php if(isset($auth_user)) : ?>
+                                <li><a href="<?php echo $this->Html->url(array(
+                                        "controller" => "users",
+                                        "action" => "logout"
+                                    ));?>">ログアウト</a></li>
+                                <?php else : ?>
+                                <li><a href="<?php echo $this->Html->url(array(
+                                        "controller" => "users",
+                                        "action" => "signin"
+                                    ));?>">ログイン</a></li>
+                                <?php endif; ?>
+                                <!-- <li><div id="header-search" class="footer-search-btn"><i class="fa fa-search fa-2x"></i><span> プロジェクト検索</span></div></li> -->
+                        </ul>
+                        </div>
+                </div>
+        </div><!--conainer end-->
+</div>
 
 <!-- contents -->
 <?php echo $this->fetch('content'); ?>

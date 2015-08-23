@@ -32,8 +32,13 @@ class VisitorsController extends AppController {
 
     public $uses = array('User', 'Detail');
 
-    public function index () {
+    public function beforeFilter() {
+        parent::beforeFilter();
+    }    
         
+    public function index () {
+        $detail_datas = $this->Detail->get_detail_datas();
+        $this->set('detail_datas', $detail_datas);
     }
 
     public function all () {
@@ -52,7 +57,17 @@ class VisitorsController extends AppController {
     }    
     
     public function detail ($detail_id = NULL) {
-        
+        $detail_data = $this->Detail->get_detail_data_by_id($detail_id);
+        $this->set('detail_data', $detail_data);        
     }
+
+    public function app_form ($detail_id = NULL) {
+        if ($this->request->is('post')) {
+            if ($this->Detail->save($this->request->data)) {
+                $this->Session->setFlash('登録に成功しました');
+                return $this->redirect('/');
+            }
+        }   
+    }    
     
 }

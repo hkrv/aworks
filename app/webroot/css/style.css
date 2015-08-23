@@ -70,3 +70,33 @@ footer{
   padding: 30px 0px;
   margin: 30px 0px 0px 0px;
 }
+
+.wrapper{
+  background: #fff;
+  border: 3px solid #f18719;
+}
+
+
+form.form-horizontal {
+    width: 90%;
+    height: auto;
+    position: relative;
+    top: 20px;
+    padding-bottom: 40px;
+    margin: 0 auto;
+  }
+
+input[type=submit]#formbtn {
+    background-color: #f18719;
+    color: #fff;
+}
+
+.page-header {
+    margin: 40px 0 0 0;
+    text-align: center;
+    border: 0;
+}
+
+
+
+

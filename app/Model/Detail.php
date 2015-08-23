@@ -31,13 +31,22 @@ class Detail extends Model {
             ));
         }else if(isset($prefecture)){
             $detail_datas = $this->find('all', array(
-                'conditions' => array('prefecture' =>$prefecture)
+                'conditions' => array('prefecture LIKE' => '%'. $prefecture. '%')
             ));
         }else{
             $detail_datas = $this->find('all');            
         }
         
         return $detail_datas;
+    }
+    
+    public function get_detail_data_by_id($detail_id){
+        
+        $detail_data = $this->find('first', array(
+            'conditions' => array('detail_id' => $detail_id)
+        ));
+        
+        return $detail_data;        
     }
     
 }
