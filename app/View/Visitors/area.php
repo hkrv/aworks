@@ -20,7 +20,7 @@
         <?php endforeach; ?>
           <div class="col-4">
             <div class="imgArea">
-            <?php echo $this->Html->image('jobs.jpg'); ?>
+            <?php echo $this->Html->image('upload/' . $data["Detail"]["image"]); ?>
             </div>
             <div class="textareaTop">
               <p class="contenttext">
